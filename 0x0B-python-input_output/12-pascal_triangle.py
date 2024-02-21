@@ -1,21 +1,19 @@
 #!/usr/bin/python3
-"""method for student creation"""
+"""
+Module for pascal_triangle method.
+"""
 
 
-class Student:
-    """Student obj, interesting how you don't have to directly
-    test for strings in a loop, python is weird"""
+def pascal_triangle(n):
+    """
+    returns a list of lists of integers
+        Args:
+            n (int): number of lists and digits
+        Returns: list of lists
 
-    def __init__(self, first_name, last_name, age):
-        self.first_name = first_name
-        self.last_name = last_name
-        self.age = age
-
-    def to_json(self, attrs=None):
-        if attrs is None:
-            return self.__dict__
-        new_dictionary = {}
-        for key, value in self.__dict__.items():
-            if key in attrs:
-                new_dictionary[key] = value
-        return new_dictionary
+    """
+    rows = [[1 for j in range(i + 1)] for i in range(n)]
+    for n in range(n):
+        for i in range(n - 1):
+            rows[n][i + 1] = sum(rows[n - 1][i:i + 2])
+    return rows
