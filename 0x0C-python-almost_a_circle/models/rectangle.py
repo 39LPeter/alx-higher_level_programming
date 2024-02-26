@@ -60,6 +60,5 @@ class Rectangle(Base):
                 set attributes(self,list_attributes[i],args[i])
             else:
              for key ,values in kwargs.items():
-                 set attributes(self,key,values)
-                 
+                 set attributes(self,key,values) 
 
