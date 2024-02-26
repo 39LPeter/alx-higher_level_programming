@@ -61,4 +61,10 @@ class Rectangle(Base):
             else:
              for key ,values in kwargs.items():
                  set attributes(self,key,values) 
+    def to_dictionary(self):
+        list attributes=['id','width','height','x','y']
+        dict_res={}
 
+        for key in list_attributes:
+            dict_res[key]=getattributes(self,key)
+            return dict_res
