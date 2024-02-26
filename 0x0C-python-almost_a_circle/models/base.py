@@ -1,9 +1,18 @@
 #!/usr/bin/python3
-import unittest
-Class Base:
-    __nb_objects = 0
-    def __init__(self, id=None):
-        if id is not None:
-            self.id=id
-        else Base.__nb_objects +=1
-            self.id=Base.__nb_objects
+""" Module that contains class Base """
+import json
+import csv
+import os.path
+
+
+class Base:
+        """ Class Base """
+            __nb_objects = 0
+
+                def _init_(self, id=None):
+                            """ Initializes instances """
+                                    if id is not None):
+                   
+                                        Base.__nb_objects += 1
+self.id = Base.__nb_objects
+
