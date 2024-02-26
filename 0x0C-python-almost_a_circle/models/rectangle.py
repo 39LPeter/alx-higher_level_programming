@@ -51,4 +51,7 @@ class Rectangle(Base):
             print()
         for _ in range (self.height)
         print (' '*self.x +'#' * self.width)
+def _str_(self):
+    return '[{}] ({}) {}/{} ' .\
+         format (type(self)._name_,self.id,self.x,self.y,self.width,self.height)
 
