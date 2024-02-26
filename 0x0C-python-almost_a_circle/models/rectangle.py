@@ -51,7 +51,12 @@ class Rectangle(Base):
             print()
         for _ in range (self.height)
         print (' '*self.x +'#' * self.width)
-def _str_(self):
-    return '[{}] ({}) {}/{} ' .\
+    def _str_(self):
+        return '[{}] ({}) {}/{} ' .\
          format (type(self)._name_,self.id,self.x,self.y,self.width,self.height)
+    def update(self, *args):
+        if args is not None and len(args) is not 0:
+            list _attributes=['id','width','height','x','y']
+            for i in range (len(args)):
+                set attributes(self,list_attributes[i],args[i])
 
