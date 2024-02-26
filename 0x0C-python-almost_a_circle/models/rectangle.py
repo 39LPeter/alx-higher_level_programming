@@ -15,7 +15,6 @@ class Rectangle(Base):
              def width(self,value):
                  self.validate_integer("width",value,False)
                  self.__width=value
-     
      @property
          def height(self)
              return self.__height
@@ -54,9 +53,13 @@ class Rectangle(Base):
     def _str_(self):
         return '[{}] ({}) {}/{} ' .\
          format (type(self)._name_,self.id,self.x,self.y,self.width,self.height)
-    def update(self, *args):
+    def update(self, *args **kwargs):
         if args is not None and len(args) is not 0:
             list _attributes=['id','width','height','x','y']
             for i in range (len(args)):
                 set attributes(self,list_attributes[i],args[i])
+            else:
+             for key ,values in kwargs.items():
+                 set attributes(self,key,values)
+                 
 
