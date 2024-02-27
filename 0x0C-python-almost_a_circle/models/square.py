@@ -11,41 +11,62 @@ class Square(Rectangle):
         super().__init__(size, size, x, y, id)
         self.size = size
 
-    """ Returns printable string representation
-    of an instance """
-    def __str__(self):
-        return ("[{}] ({}) {:d}/{:d} - {:d}".format(
-            self.__class__.__name__, self.id, self.x,
-            self.y, self.size))
+    def _str_(self):
+        """ str special method """
+        str_square = "[Square] "
+        str_id = "({}) ".format(self.id)
+        str_xy = "{}/{} - ".format(self.x, self.y)
+        str_wh = "{}/{}".format(self.width, self.height)
 
-    """ Size getter and setter """
+        return str_square + str_id + str_xy + str_wh
+
     @property
     def size(self):
-        return (self.width)
+        """ Getter size """
+        return self.width
 
     @size.setter
     def size(self, value):
+        """ Setter size """
         self.width = value
         self.height = value
 
-    def update(self, *args, **kwargs):
-        """ This method assigns an argument to each attribute """
-        if args:
-            for argmts in range(len(args)):
-                if argmts == 0:
-                    self.id = args[argmts]
-                if argmts == 1:
-                    self.size = args[argmts]
-                if argmts == 2:
-                    self.x = args[argmts]
-                if argmts == 3:
-                    self.y = args[argmts]
+    def _str_(self):
+        """ str special method """
+        str_rectangle = "[Square] "
+        str_id = "({}) ".format(self.id)
+        str_xy = "{}/{} - ".format(self.x, self.y)
+        str_size = "{}".format(self.size)
 
+        return str_rectangle + str_id + str_xy + str_size
+def update(self, *args, **kwargs):
+        """ update method """
+        if args is not None and len(args) is not 0:
+            list_attributes = ['id', 'size', 'x', 'y']
+            for i in range(len(args)):
+                if list_attributes[i] == 'size':
+                    setattributes(self, 'width', args[i])
+                    setattributes(self, 'height', args[i])
+                else:
+                    setattributes(self, list_atr[i], args[i])
         else:
             for key, value in kwargs.items():
-                setattr(self, key, value)
+                if key == 'size':
+                    setattributes(self, 'width', value)
+                    setattributes(self, 'height', value)
+                else:
+                    setattributes(self, key, value)
 
-    def to_dictionary(self):
-        """ Returns the dictionary representation of a Rectangle"""
-        return ({'id': self.id, 'x': self.x, 'size': self.size, 'y': self.y})
+def to_dictionary(self):
+        """ Returns a dictionary with attributes """
+        list_attributes = ['id', 'size', 'x', 'y']
+        dict_res = {}
 
+        for key in list_attributes:
+            if key == 'size':
+                dict_res[key] = getattributes(self, 'width')
+            else:
+                dict_res[key] = getattributes(self, key)
+
+
+                return  dict_res

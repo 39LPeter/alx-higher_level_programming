@@ -57,10 +57,10 @@ class Rectangle(Base):
         if args is not None and len(args) is not 0:
             list _attributes=['id','width','height','x','y']
             for i in range (len(args)):
-                set attributes(self,list_attributes[i],args[i])
+                setattributes(self,list_attributes[i],args[i])
             else:
              for key ,values in kwargs.items():
-                 set attributes(self,key,values) 
+                 setattributes(self,key,values) 
     def to_dictionary(self):
         list attributes=['id','width','height','x','y']
         dict_res={}
