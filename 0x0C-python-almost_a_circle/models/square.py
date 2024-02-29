@@ -1,72 +1,72 @@
 #!/usr/bin/python3
-""" New class Square """
+
+"""This module contains ``Square`` class."""
+
 from models.rectangle import Rectangle
 
 
 class Square(Rectangle):
-    """ Class Square that inherist from Rectangle """
+    """Defines a Square."""
 
     def __init__(self, size, x=0, y=0, id=None):
-        """ Class constructor """
+        """Creates a Square.
+
+        Args:
+            size(int): the size of the `square`
+            x(int): The x axis of the `square`
+            y(int): The y axis of the `square`
+            id(int|Any): The id of the `square`
+        """
+
         super().__init__(size, size, x, y, id)
-        self.size = size
 
-    def _str_(self):
-        """ str special method """
-        str_square = "[Square] "
-        str_id = "({}) ".format(self.id)
-        str_xy = "{}/{} - ".format(self.x, self.y)
-        str_wh = "{}/{}".format(self.width, self.height)
-
-        return str_square + str_id + str_xy + str_wh
+    def __str__(self):
+        return "[Square] ({}) {:d}/{:d} - {:d}".format(self.id, self.x,
+                                                       self.y, self.width)
 
     @property
     def size(self):
-        """ Getter size """
-        return self.width
+        """Returns the size of the `square`."""
+
+        return super().width
 
     @size.setter
     def size(self, value):
-        """ Setter size """
+        """Sets the square size.
+
+        Args:
+            size(int): The size of the square
+        """
+
         self.width = value
         self.height = value
 
-    def _str_(self):
-        """ str special method """
-        str_rectangle = "[Square] "
-        str_id = "({}) ".format(self.id)
-        str_xy = "{}/{} - ".format(self.x, self.y)
-        str_size = "{}".format(self.size)
+    def update(self, *args, **kwargs):
+        """assigns attributes.
 
-        return str_rectangle + str_id + str_xy + str_size
-def update(self, *args, **kwargs):
-        """ update method """
-        if args is not None and len(args) is not 0:
-            list_attributes = ['id', 'size', 'x', 'y']
-            for i in range(len(args)):
-                if list_attributes[i] == 'size':
-                    setattributes(self, 'width', args[i])
-                    setattributes(self, 'height', args[i])
-                else:
-                    setattributes(self, list_atr[i], args[i])
-        else:
-            for key, value in kwargs.items():
-                if key == 'size':
-                    setattributes(self, 'width', value)
-                    setattributes(self, 'height', value)
-                else:
-                    setattributes(self, key, value)
+        Args:
+            args(*): A variadic arguments represented as tuple
+            kwargs(**): A variadic arguments represented as dictionary
+        """
 
-def to_dictionary(self):
-        """ Returns a dictionary with attributes """
-        list_attributes = ['id', 'size', 'x', 'y']
-        dict_res = {}
+        if args is not None:
+            attributes = ['id', 'size', 'x', 'y']
 
-        for key in list_attributes:
-            if key == 'size':
-                dict_res[key] = getattributes(self, 'width')
-            else:
-                dict_res[key] = getattributes(self, key)
+            for i, arg in enumerate(args):
+                if i > len(attributes):
+                    break
+                setattr(self, attributes[i], arg)
 
+        if (args is None or len(args) == 0) and kwargs is not None:
+            for key in kwargs:
+                setattr(self, key, kwargs[key])
 
-                return  dict_res
+    def to_dictionary(self):
+        """returns the dictionary representation of a Square."""
+
+        return {
+            'id': self.id,
+            'size': self.size,
+            'x': self.x,
+            'y': self.y
+        }
