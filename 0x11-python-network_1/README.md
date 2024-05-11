@@ -48,4 +48,4 @@ How to manipulate data from an external service.
 
 ## Collaborate
 
-To collaborate, reach me through my email address wendymunyasi@gmail.com.
+To collaborate, reach me through my email address wlone3949@gmail.com 
